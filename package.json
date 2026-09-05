@@ -1,1 +1,12 @@
-
+{
+  "name": "myai-backend",
+  "version": "1.0.0",
+  "description": "Backend server for My AI Assistant app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
