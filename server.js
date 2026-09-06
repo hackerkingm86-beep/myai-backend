@@ -49,11 +49,26 @@ app.post("/chat", async (req, res) => {
             });
         }
 
-        const reply = (data.output || [])
-            .flatMap(item => item.content || [])
-            .filter(item => item.type === "output_text")
-            .map(item => item.text)
-            .join("");
+        const outputText = (data.output || [])
+    .flatMap(item => item.content || [])
+    .filter(item => item.type === "output_text");
+
+const reply = outputText
+    .map(item => item.text)
+    .join("");
+
+const links = outputText
+    .flatMap(item => item.annotations || [])
+    .filter(item => item.type === "url_citation")
+    .map(item => ({
+        title: item.title || "Source",
+        url: item.url
+    }));
+
+res.json({
+    reply: reply || "No response received.",
+    links: links
+});
 
         res.json({
             reply: reply || "No response received."
