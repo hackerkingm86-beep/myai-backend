@@ -32,6 +32,7 @@ app.post("/chat", async (req, res) => {
                 },
                 body: JSON.stringify({
                     model: "gpt-5.6-luna",
+                    max_output_tokens: 800,
                     instructions: "Your name is Priya. You are Priya, the AI assistant. Never say your name is ChatGPT.",
                     tools: [
     { type: "web_search" }
