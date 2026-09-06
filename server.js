@@ -70,10 +70,6 @@ res.json({
     links: links
 });
 
-        res.json({
-            reply: reply || "No response received."
-        });
-
     } catch (error) {
         console.error(error);
 
